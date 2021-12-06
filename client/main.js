@@ -1,7 +1,7 @@
 const complimentButton = document.getElementById("complimentButton");
 const fortuneButton = document.getElementById("fortuneButton")
 const displayFortune = document.getElementById("displayFortune")
-const submitForm = document.querySelector("form");
+const submitForm = document.querySelector("#this-form");
 const itemsList = document.getElementById('list-items');
 const displayToDoList = document.getElementById('display-to-do');
 const passwordContainer = document.getElementById('password-container');
@@ -79,7 +79,7 @@ function submitStringToken(event) {
     let password = document.querySelector('#enter-password');
   
     let bodyObj = {password: password.value};
-  
+
     token(bodyObj);
     password.value = '';
 }

@@ -1,0 +1,75 @@
+body{
+    background-color: #e8dbc5;
+    margin: 1rem;
+    padding: 1rem;
+    max-width: 90%;
+    margin: 2rem auto;
+    font-family: sans-serif;
+}
+input{
+    display: block;
+}
+div{
+    border-style: solid;
+    border-color: #8d6b94;
+    border-width: medium;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+form{
+    display: flex;
+    justify-content: center;
+    display: flex;
+    flex-flow: wrap column;
+}
+p{
+    margin: 5px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#list-items{
+    border-width: thin;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    flex-flow: wrap column;
+}
+#complimentButton{
+    background-color: #b185a7;
+    margin: 5px;
+    height: 50px;
+}
+#fortuneButton{
+    background-color: #b185a7;
+    margin: 5px;
+    height: 50px;
+}
+#display-to-do{
+    background-color: #b185a7;
+    margin: 5px;
+    height: 50px;
+}
+#submit-button{
+    background-color: #b185a7;
+    margin: 5px;
+    height: 50px;
+}
+#encryptButton{
+    background-color: #b185a7;
+    margin: 5px;
+    height: 50px;
+}
+#toDoField{
+    background-color: #c3a29e;
+    margin: 5px;
+    height: 50px;
+}
+#enter-password{
+    background-color: #c3a29e;
+    margin: 5px;
+    height: 50px;
+}
