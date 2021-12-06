@@ -3,7 +3,8 @@ const fortuneButton = document.getElementById("fortuneButton")
 const displayFortune = document.getElementById("displayFortune")
 const submitForm = document.querySelector("form");
 const itemsList = document.getElementById('list-items');
-const deleteAnItem = document.getElementById('EnterToDeleteItem');
+const displayToDoList = document.getElementById('display-to-do');
+const passwordContainer = document.getElementById('password-container');
 
 const baseURL = "http://localhost:4000/api";
 
@@ -40,6 +41,15 @@ const submitToDoList = event => {
 }
 const createToDoList = body => {
     axios.post(`${baseURL}/toDo/`, body)
+        .then(console.log('success'))
+        .catch(function(error)
+                {console.log(error.reponse.data)})
+}
+submitForm.addEventListener('click', submitToDoList);
+
+//display to do list
+const getToDoList = () => {
+	axios.get(`${baseURL}/toDo/`)
         .then(function({data: toDo})
                 {displayToDo(toDo)})
         .catch(function(error)
@@ -57,25 +67,36 @@ const addToDoList = toDoItem => {
     newItem.innerHTML = `<p>${toDoItem.formInput}</p>`;
     itemsList.appendChild(newItem);
 }
-submitForm.addEventListener('click', submitToDoList);
+displayToDoList.addEventListener('click', getToDoList);
 
-//////////functions below delete item from todo List///////////////
-const deleteItemFromList = event => {
+////get token
+const displayHere = document.querySelector('#display-token');
+const tokenForm = document.querySelector('#token-form');
+
+function submitStringToken(event) {
     event.preventDefault();
-    
-    let formInput = document.querySelector("#toDeleteField");
-
-    let toDoObj = {formInput: formInput.value};
-
-    removeItem(toDoObj);
-    formInput.value = '';
+  
+    let password = document.querySelector('#enter-password');
+  
+    let bodyObj = {password: password.value};
+  
+    token(bodyObj);
+    password.value = '';
 }
-const removeItem = (body) => {
-    id = 1;
-    axios.delete(`${baseURL}/toDo/${id}`, body)
-    .then(function({data: toDo})
-            {displayToDo(toDo)})
-    .catch(function(error)
-            {console.log(error.reponse.data)})
+
+const token = body => {
+    axios.post(`${baseURL}/token`, body).
+    then(response => {createToken(response.data)})
+    .catch(error => {console.log(error)});
 }
-deleteAnItem.addEventListener('click', deleteItemFromList);
+  
+  function createToken(data) {
+      displayHere.innerHTML = '';
+      const thisToke = document.createElement('div');
+      thisToke.classList.add('user-token');
+  
+      thisToke.innerHTML = `<p>Token: ${data.passwordHash}</p>`
+      displayHere.appendChild(thisToke);
+  }
+  
+  tokenForm.addEventListener('submit', submitStringToken);

@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Back End Assessment</title>
-  </head>
-  <body class="container">
-    <!-- First button -->
-    <button id="complimentButton">Get a compliment</button>
-    <section></section>
+	<head>
+		<link rel='stylesheet' href='./style.css'/>
+		<title>Back End Assessment 4</title>
+		<meta author="Carlotta"/>
+	</head>
+	<body class="container">
+		<!-- First button -->
+		<button id="complimentButton">Get a compliment</button>
+		<section></section>
 
-    <!-- Second button -->
-    <button id="fortuneButton">Get a fortune</button>
-    <p id="displayFortune"></p>
+		<!-- Second button -->
+		<button id="fortuneButton">Get a fortune</button>
+		<p id="displayFortune"></p>
 
-    <!-- Third item -->
-    <form>
-      <input type="text" id="toDoField" placeholder="To do list"/>
-      <input type="submit"><br>
-    </form>
-    
-    <p id="list-items"></p>
-        
-    <!-- Fourth item -->
-    <section id="EnterToDeleteItem">
-      <input type="text" id="toDeleteField" placeholder="Enter item to delete"/>
-      <input type="submit" value="Delete"><br>
-    </section>
+		<!-- Third item -->
+		<form>
+			<input type="text" id="toDoField" placeholder="To do list"/>
+			<input type="submit"><br>
 
+		<!-- Fourth item -->
+			<button id="display-to-do">Display List</button>	
+			<p id='list-items'></p>
+		</form>
 
-    <!-- Fifth item -->
+		<!-- Fifth item -->
+		<form id="token-form">
+			<p>Enter a string to receive a secret token: </p>
+			<input type='password' id="enter-password" placeholder='Enter String'>
+			<button>Encrypt</button>
+		<section id="display-token"></section>
+		</form>
 
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="main.js"></script>
-  </body>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="main.js"></script>
+	</bodyj
 </html>
