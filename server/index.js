@@ -12,6 +12,7 @@ const {
 	aList,
 	getToDoList, 
 	token,
+	getMovies
 } = require('./controller.js');
 
 app.get('/api/compliment', compliments);
@@ -19,5 +20,6 @@ app.get('/api/fortune', fortunes);
 app.post('/api/toDo/', aList);
 app.get('/api/toDo/', getToDoList);
 app.post('/api/token/', token);
+app.get('/api/movies', getMovies)
 
 app.listen(4000, () => console.log("Server running on 4000"));

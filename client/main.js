@@ -5,6 +5,10 @@ const submitForm = document.querySelector("#this-form");
 const itemsList = document.getElementById('list-items');
 const displayToDoList = document.getElementById('display-to-do');
 const passwordContainer = document.getElementById('password-container');
+const displayHere = document.querySelector('#display-token');
+const tokenForm = document.querySelector('#token-form');
+const getMovies = document.querySelector('#get-movies');
+const movieSuggestions = document.querySelector('#movie-suggestions');
 
 const baseURL = "http://localhost:4000/api";
 
@@ -33,9 +37,8 @@ const submitToDoList = event => {
     event.preventDefault();
     
     let formInput = document.querySelector("#toDoField");
-
     let toDoObj = {formInput: formInput.value};
-
+    
     createToDoList(toDoObj);
     formInput.value = '';
 }
@@ -57,7 +60,7 @@ const getToDoList = () => {
 }
 const displayToDo = toDoArr => {
     itemsList.innerHTML = '';
-    for(let i = 0; i < toDoArr.length; i++){
+    for(let i = 0; i < toDoArr.length; ++i){
         addToDoList(toDoArr[i]);
     }
 }
@@ -70,9 +73,6 @@ const addToDoList = toDoItem => {
 displayToDoList.addEventListener('click', getToDoList);
 
 ////get token
-const displayHere = document.querySelector('#display-token');
-const tokenForm = document.querySelector('#token-form');
-
 function submitStringToken(event) {
     event.preventDefault();
   
@@ -90,13 +90,23 @@ const token = body => {
     .catch(error => {console.log(error)});
 }
   
-  function createToken(data) {
-      displayHere.innerHTML = '';
-      const thisToke = document.createElement('div');
-      thisToke.classList.add('user-token');
+function createToken(data) {
+    displayHere.innerHTML = '';
+    const thisToke = document.createElement('div');
+    thisToke.classList.add('user-token');
   
-      thisToke.innerHTML = `<p>Token: ${data.passwordHash}</p>`
-      displayHere.appendChild(thisToke);
-  }
+    thisToke.innerHTML = `<p>Token: ${data.passwordHash}</p>`
+    displayHere.appendChild(thisToke);
+}
+tokenForm.addEventListener('submit', submitStringToken);
+
+  //////get some random movie suggestions
   
-  tokenForm.addEventListener('submit', submitStringToken);
+const getSomeMovies = event => {
+    axios.get(`${baseURL}/movies/`)
+      .then(function(response) {
+          const data = response.data;
+          movieSuggestions.innerHTML = data;
+      });
+};
+getMovies.addEventListener('click', getSomeMovies);

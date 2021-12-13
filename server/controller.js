@@ -13,6 +13,20 @@ const fortunesArr = [
 ];
 globalId = 3;
 
+const topThree = [
+	" Spider-Man Far From Home\n",
+	" Avengers Endgame\n",
+	" Shang-Chi and the Legend of the Ten Rings\n",
+	" Captain Marvel\n",
+	" Black Panther\n",
+	" Doctor Strange\n",
+	" Guardians of the Galaxy\n",
+	" Thor: The Dark World\n",
+	" The Incredible Hulk\n",
+	" Thor\n",
+	" Iron Man 2\n"
+]
+
 module.exports = {
 	compliments: (req, res) => {
 		const compliments = ["Gee, you're a smart cookie!",
@@ -53,6 +67,7 @@ module.exports = {
 		console.log(request.body)
 
 		const { password } = request.body;
+		
 		let salt = bcrypt.genSaltSync(3);
 		let passwordHash = bcrypt.hashSync(password, salt);
 
@@ -61,5 +76,15 @@ module.exports = {
 		users.push(newToken);
 
 		response.status(200).send(newToken);
+		
 	},
+
+	getMovies: (request, response) => {
+		let threeItems = [];
+		for(let i = 0; i < 3; i++){
+			let randomMovies = topThree[Math.floor(Math.random() * topThree.length)];
+			threeItems.push(randomMovies);
+		}
+		response.status(200).send(threeItems);
+	}
 }

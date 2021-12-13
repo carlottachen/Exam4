@@ -42,26 +42,31 @@ p{
     background-color: #b185a7;
     margin: 5px;
     height: 50px;
+    border-radius: 15px;
 }
 #fortuneButton{
     background-color: #b185a7;
     margin: 5px;
     height: 50px;
+    border-radius: 15px;
 }
 #display-to-do{
     background-color: #b185a7;
     margin: 5px;
     height: 50px;
+    border-radius: 15px;
 }
 #submit-button{
     background-color: #b185a7;
     margin: 5px;
     height: 50px;
+    border-radius: 15px;
 }
 #encryptButton{
     background-color: #b185a7;
     margin: 5px;
     height: 50px;
+    border-radius: 15px;
 }
 #toDoField{
     background-color: #c3a29e;
@@ -72,4 +77,16 @@ p{
     background-color: #c3a29e;
     margin: 5px;
     height: 50px;
+}
+#get-movies{
+    background-color: #b185a7;
+    margin: 0 35% 5px 35%;
+    height: 50px;
+    border-radius: 15px;
+}
+#movies-section{
+    display: flex;
+    justify-content: center;
+    display: flex;
+    flex-flow: wrap column;
 }
